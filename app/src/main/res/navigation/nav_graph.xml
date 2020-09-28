@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/permissions_fragment">
+
+    <fragment
+        android:id="@+id/permissions_fragment"
+        android:name="com.kpfu.itis.mycamera.presentation.fragments.PermissionsFragment"
+        android:label="PermissionsFragment" >
+
+        <action
+            android:id="@+id/action_permissions_to_camera"
+            app:destination="@id/camera_fragment"
+            app:popUpTo="@id/permissions_fragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/camera_fragment"
+        android:name="com.kpfu.itis.mycamera.presentation.fragments.CameraFragment"
+        android:label="CameraFragment" >
+
+        <action
+            android:id="@+id/action_camera_to_gallery"
+            app:destination="@id/gallery_fragment" />
+
+        <action
+            android:id="@+id/action_camera_to_permissions"
+            app:destination="@id/permissions_fragment"
+            app:popUpTo="@id/camera_fragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_camera_fragment_to_presetsFragment"
+            app:destination="@id/presetsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/gallery_fragment"
+        android:name="com.kpfu.itis.mycamera.presentation.fragments.GalleryFragment"
+        android:label="GalleryFragment" >
+
+        <action
+            android:id="@+id/action_gallery_to_camera"
+            app:destination="@id/camera_fragment" />
+        <argument
+            android:name="root_directory"
+            app:argType="string" />
+        <argument
+            android:name="previous_lens"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/presetsFragment"
+        android:name="com.kpfu.itis.mycamera.presentation.fragments.PresetsFragment"
+        android:label="fragment_presets_list"
+        tools:layout="@layout/fragment_presets_list">
+
+        <action
+            android:id="@+id/action_presetList_to_camera"
+            app:destination="@id/camera_fragment"
+            app:popUpTo="@id/presetsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+</navigation>
